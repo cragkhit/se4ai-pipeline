@@ -13,6 +13,7 @@ def clean_sales(df: pd.DataFrame) -> pd.DataFrame:
     # TODO (Task 1): move the "2. clean" block from train_all.py here.
     # TODO (Task 2): make it work for data/sales_2026_q1.csv as well
     #                (run `pytest` to see what is expected).
-    df["sold_date"] = pd.to_datetime(df["sold_date"], format="%Y-%m-%d")
+    df["sold_date"] = pd.to_datetime(df["sold_date"], format="ISO8601", utc=True)
+    df["sqft"] = df["sqft"].fillna(0).astype(int)
     df = df[df["price"] > 10_000]  
     return df
