@@ -13,6 +13,6 @@ def load_sales(paths: list[Path]) -> pd.DataFrame:
     """
     # TODO (Task 1): move the "1. collect" block from train_all.py here.
     # Hint: pd.concat([pd.read_csv(p) for p in paths], ignore_index=True)
-    df = pd.read_csv("data/sales_2025.csv")
+    df = pd.concat([pd.read_csv(p) for p in paths], ignore_index=True)
     print("loaded", len(df), "sales")
     return df
